@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\StudentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +17,9 @@ use App\Http\Controllers\AuthController;
 */
 Route::post('/auth/register', [AuthController::class, 'register']);
 Route::post('/auth/login', [AuthController::class, 'login']);
+Route::post('auth/me', [AuthController::class, 'me'])->middleware('auth:sanctum');
+
+Route::apiResource('student', StudentController::class);
 
 // Route::get('/User',[UserController::class, 'index']);
 // Route::get('/User/{id}',[UserController::class, 'show']);
