@@ -15,7 +15,8 @@ class AuthController extends Controller
         {
             //validate
             $rules=[
-                'username'=>'required|string',
+                'nom'=>'required|string',
+                'prenom'=>'required|string',
                 'email'=>'required|email|unique:users|string',
                 'password'=>'required|min:6|string'
             ];
@@ -25,13 +26,15 @@ class AuthController extends Controller
             }
             //create user
             $user = User::create([
-                'username'=>$req->username,
+                'nom'=>$req->nom,
+                'prenom'=>$req->prenom,
                 'email'=>$req->email,
                 'password'=>Hash::make($req->password)
             ]);
             $token = $user->createToken('auth_token')->plainTextToken;
 
                 return response()->json([
+                    'user_id' =>$user->id,
                     'acces_token'=> $token ,
                     'token_type' => 'Bearer',
                 ]);
@@ -52,6 +55,7 @@ class AuthController extends Controller
             $token = $user->createToken('auth_token')->plainTextToken;
 
             return response()->json([
+            'user_id' => $user->id,
             'access_token' => $token,
             'token_type' => 'Bearer',
             ]);
