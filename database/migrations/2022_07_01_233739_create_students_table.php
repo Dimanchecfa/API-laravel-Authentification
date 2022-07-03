@@ -19,9 +19,13 @@ return new class extends Migration
             $table->String('nom');
             $table->String('prenom');
             $table->String('email')->unique();
-
-
+            $table->String('cycle')->nullable()->default('License');
+            $table->String('niveau')->nullable()->default('License 1');
+            $table->String('annee_academique')->nullable()->default('2022-2023');
             $table->timestamps();
+
+
+           
         });
     }
 
