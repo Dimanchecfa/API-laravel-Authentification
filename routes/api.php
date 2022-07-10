@@ -18,7 +18,7 @@ use App\Http\Controllers\UserController;
 */
 Route::post('/auth/register', [AuthController::class, 'register']);
 Route::post('/auth/login', [AuthController::class, 'login']);
-Route::get('/user', [AuthController::class, 'liste']);
+Route::get('/auth/user', [AuthController::class, 'liste']);
 Route::post('auth/me', [AuthController::class, 'me'])->middleware('auth:sanctum');
 
 Route::apiResource('student', StudentController::class);
