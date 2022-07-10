@@ -21,11 +21,10 @@ Route::post('auth/me', [AuthController::class, 'me'])->middleware('auth:sanctum'
 
 Route::apiResource('student', StudentController::class);
 
-// Route::get('/User',[UserController::class, 'index']);
-// Route::get('/User/{id}',[UserController::class, 'show']);
-// // Route::post('/User',[UserController::class, 'store']);
-// Route::put('/User/{id}',[UserController::class, 'update']);
-// Route::delete('/User/{id}',[UserController::class, 'destroy']);
+Route::get('/user',[AuthController::class, 'index']);
+Route::get('/user/{id}',[AuthController::class, 'show']);
+Route::put('/user/{id}',[AuthController::class, 'update']);
+
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

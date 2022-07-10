@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\StudentResource;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -10,6 +11,27 @@ use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
 {
+
+      public function index()
+    {
+          return StudentResource::collection(User::orderByDesc('created_at')->get());
+    }
+
+     public function show(User $user)
+    {
+         return new StudentResource($user);
+    }
+
+    public function update(Request $request,User $user)
+    {
+         if ($user->update($request->all())) {
+            return response()->json([
+                'success' => 'Informations modifiée avec succès'
+            ], 200);
+        }
+        
+    }
+
 
     public function register(Request $req)
         {
