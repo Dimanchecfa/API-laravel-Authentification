@@ -13,7 +13,7 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-      public function liste()
+      public function index()
     {
          return  response()->json(User::all());
     }
@@ -36,7 +36,11 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-   
+    public function show(User $user)
+    {
+        return new StudentResource($user);
+    }
+
     /**
      * Update the specified resource in storage.
      *
@@ -44,7 +48,15 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-  
+    public function update(Request $request,User $user)
+    {
+         if ($user->update($request->all())) {
+            return response()->json([
+                'success' => 'Informations modifiée avec succès'
+            ], 200);
+        }
+        
+    }
 
     /**
      * Remove the specified resource from storage.

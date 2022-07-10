@@ -18,14 +18,13 @@ use App\Http\Controllers\UserController;
 */
 Route::post('/auth/register', [AuthController::class, 'register']);
 Route::post('/auth/login', [AuthController::class, 'login']);
-Route::get('/auth/user', [AuthController::class, 'liste']);
+Route::get('/user', [AuthController::class, 'liste']);
 Route::post('auth/me', [AuthController::class, 'me'])->middleware('auth:sanctum');
 
 Route::apiResource('student', StudentController::class);
+Route::apiResource('user', UserController::class);
 
-Route::get('/user',[UserController::class, 'index']);
 
-Route::put('/user/{id}',[UserController::class, 'update']);
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
