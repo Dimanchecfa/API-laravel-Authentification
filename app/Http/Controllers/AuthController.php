@@ -19,7 +19,7 @@ class AuthController extends Controller
 
      public function show(User $user)
     {
-         return new StudentResource($user);
+        return new StudentResource($user);
     }
 
     public function update(Request $request,User $user)
