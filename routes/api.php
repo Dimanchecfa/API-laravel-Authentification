@@ -20,7 +20,7 @@ Route::post('/auth/login', [AuthController::class, 'login']);
 Route::post('auth/me', [AuthController::class, 'me'])->middleware('auth:sanctum');
 
 Route::apiResource('student', StudentController::class);
-Route::apiResource('student', AuthController::class);
+Route::apiResource('user', AuthController::class);
 
 
 
