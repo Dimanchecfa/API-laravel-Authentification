@@ -20,10 +20,8 @@ Route::post('/auth/login', [AuthController::class, 'login']);
 Route::post('auth/me', [AuthController::class, 'me'])->middleware('auth:sanctum');
 
 Route::apiResource('student', StudentController::class);
+Route::apiResource('student', AuthController::class);
 
-Route::get('/user',[AuthController::class, 'index']);
-Route::get('/user/{id}',[AuthController::class, 'show']);
-Route::put('/user/{id}',[AuthController::class, 'update']);
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
