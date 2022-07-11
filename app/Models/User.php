@@ -24,6 +24,10 @@ class User extends Authenticatable
         'image',
         'password',
     ];
+       public function message(){
+        return $this->hasMany(Message::class);
+        //Un user peut messages plusieurs messages
+    }
 
     /**
      * The attributes that should be hidden for serialization.
